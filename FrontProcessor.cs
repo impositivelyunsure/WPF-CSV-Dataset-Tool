@@ -26,6 +26,10 @@ namespace Malin_SSS_AT3
             {
                 mwindow.lstBoxDisplay.Items.Add($"{item.Key}, {item.Value}");
             }
+
+
+
+
         }
 
         public void DisplayQueriedListBox(MainWindow mwindow, IOrderedEnumerable<KeyValuePair<int, string>> query)
