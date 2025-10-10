@@ -19,7 +19,6 @@ namespace Malin_SSS_AT3
             {
                 var parts = line.Split(',');
 
-
                 if (string.IsNullOrWhiteSpace(line)) continue;
 
                 if (parts.Length < 0) continue;
@@ -32,22 +31,6 @@ namespace Malin_SSS_AT3
                 MasterFile[key] = right;
             }
         }
-
-        //// Filter by the Name
-        //public IOrderedEnumerable<KeyValuePair<int, string>> FilterByName(string name)
-        //{
-        //    // query the dictionary for the value (name)
-        //    var query = MasterFile.Where(item => string.IsNullOrEmpty(name) || item.Value.ToString().StartsWith(name)).OrderBy(item => item.Value);
-        //    return query;
-        //}
-
-        //// Filter by the ID
-        //public IOrderedEnumerable<KeyValuePair<int, string>> FilterByID(string id)
-        //{
-        //    // query the dictionary for the key (id)
-        //    var query = MasterFile.Where(item => string.IsNullOrEmpty(id) || item.Key.ToString().StartsWith(id)).OrderBy(item => item.Key);
-        //    return query;
-        //}
 
         // Filter by both Name and ID
         public IOrderedEnumerable<KeyValuePair<int, string>> Filter(string name, string id)

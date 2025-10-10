@@ -5,20 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Malin_SSS_AT3"
         mc:Ignorable="d"
-        Title="MainWindow" Height="750" Width="1256">
+        Title="MainWindow" Height="750" Width="1256"
+        KeyDown="Window_KeyDown">
     <Grid Margin="0,0,0,-6">
-        <ListBox Name="lstBoxDisplay" Margin="508,149,508,32">
+        <ListBox Name="lstBoxDisplay" Margin="212,133,804,48">
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
                     <Setter Property="IsEnabled" Value="False"/>
                 </Style>
             </ListBox.ItemContainerStyle>
         </ListBox>
-        <ListBox Name="lstBoxSecondDisplay" Margin="990,149,26,32" SelectionChanged="lstBox_SelectionChanged"/>
+        <ListBox Name="lstBoxSecondDisplay" KeyDown="lstBoxSecondDisplay_KeyUp" SelectionChanged="lstBox_SelectionChanged" Margin="494,133,522,48"/>
 
-        <TextBox Name="txtBoxName" TextChanged="txtBoxName_TextChanged" HorizontalAlignment="Left" Margin="10,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="txtBoxClientID" TextChanged="txtBoxClientID_TextChanged" HorizontalAlignment="Left" Margin="10,203,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Name" HorizontalAlignment="Left" Margin="10,102,0,0" VerticalAlignment="Top"/>
-        <Label Content="Client ID" HorizontalAlignment="Left" Margin="10,177,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="txtBoxName" KeyDown="txtBoxName_KeyDown" TextChanged="txtBoxName_TextChanged" HorizontalAlignment="Left" Margin="42,162,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="txtBoxClientID" KeyDown="txtBoxClientID_KeyDown" TextChanged="txtBoxClientID_TextChanged" HorizontalAlignment="Left" Margin="42,237,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
+        <Label Content="Name" HorizontalAlignment="Left" Margin="42,130,0,0" VerticalAlignment="Top"/>
+        <Label Content="Client ID" HorizontalAlignment="Left" Margin="42,206,0,0" VerticalAlignment="Top"/>
+        <Label Content="Unsorted List" HorizontalAlignment="Left" Margin="303,102,0,0" VerticalAlignment="Top"/>
+        <Label Content="Sorted List" HorizontalAlignment="Left" Margin="592,102,0,0" VerticalAlignment="Top"/>
+
+        <DockPanel LastChildFill="True">
+            <StatusBar Name="stsStrip" DockPanel.Dock="Bottom" Height="31">
+                <TextBlock Text="Status: "/>
+            </StatusBar>
+            <Grid/>
+        </DockPanel>
     </Grid>
 </Window>
