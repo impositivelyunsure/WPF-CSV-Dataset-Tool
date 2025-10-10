@@ -19,6 +19,7 @@ namespace Malin_SSS_AT3
             {
                 var parts = line.Split(',');
 
+
                 if (string.IsNullOrWhiteSpace(line)) continue;
 
                 if (parts.Length < 0) continue;
