@@ -41,7 +41,7 @@ namespace Malin_SSS_AT3
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            frontProcessorObj.WindowKeyDown((MainWindow)MainWindow.GetWindow(this), e);
+            frontProcessorObj.WindowKeyDown(backProcessorObj, (MainWindow)MainWindow.GetWindow(this), e);
         }
 
         private void lstBoxSecondDisplay_KeyUp(object sender, KeyEventArgs e)

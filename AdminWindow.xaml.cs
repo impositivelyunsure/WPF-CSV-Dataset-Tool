@@ -17,16 +17,16 @@ namespace Malin_SSS_AT3
     public partial class AdminWindow : Window
     {
         BackProcessor backProcessorObj = new BackProcessor();
-        private readonly int id;
-        private readonly string name;
+        FrontProcessor frontProcessorObj = new FrontProcessor();
+        private readonly string csvPath = "MalinStaffNamesV3.csv";
 
-        public AdminWindow(int genId, string genName)
+        public AdminWindow(BackProcessor backPro, int genId, string genName)
         {
             InitializeComponent();
             txtBoxAdminID.Text = genId.ToString();
             txtBoxAdminName.Text = genName;
+            backProcessorObj = backPro;
         }
-
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
@@ -41,6 +41,14 @@ namespace Malin_SSS_AT3
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
             stsStrip.Items.Add(backProcessorObj.DeleteStaff(txtBoxAdminName.Text, txtBoxAdminID.Text));
+            frontProcessorObj.ClearAdminTextBoxes((AdminWindow)AdminWindow.GetWindow(this));
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            backProcessorObj.SaveCsv(csvPath);
+        }
+
+
     }
 }

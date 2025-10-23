@@ -22,6 +22,15 @@ namespace Malin_SSS_AT3
             mwindow.txtStatusMessage.Text = "Cleared text boxes.";
         }
 
+        public void ClearAdminTextBoxes(AdminWindow awindow)
+        {
+            awindow.txtBoxAdminID.Text = string.Empty;
+            awindow.txtBoxAdminName.Text = string.Empty;
+
+            awindow.txtStatusMessage.Text = "";
+            awindow.txtStatusMessage.Text = "Cleared text boxes.";
+        }
+
         // Display the original, unsorted list box
         public void DisplayUnsortedListBox(MainWindow mwindow, BackProcessor processor)
         {
@@ -120,14 +129,14 @@ namespace Malin_SSS_AT3
         }
 
         // Opening Admin GUI
-        public void WindowKeyDown(MainWindow window, KeyEventArgs e)
+        public void WindowKeyDown(BackProcessor processor, MainWindow window, KeyEventArgs e)
         {
             bool alt = (Keyboard.Modifiers & ModifierKeys.Alt) != 0;
             var key = e.SystemKey == Key.None ? e.Key : e.SystemKey;
 
             if (alt && key == Key.A)
             {
-                var admin = new AdminWindow(int.Parse(window.txtBoxClientID.Text), window.txtBoxName.Text);
+                var admin = new AdminWindow(processor, int.Parse(window.txtBoxClientID.Text), window.txtBoxName.Text);
                 admin.Owner = window;
                 admin.ShowDialog();
             }

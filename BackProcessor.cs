@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Xml.Linq;
 
 namespace Malin_SSS_AT3
@@ -31,6 +32,22 @@ namespace Malin_SSS_AT3
                 if (!int.TryParse(left, out var key)) continue;          
 
                 MasterFile[key] = right;
+            }
+        }
+
+        public void SaveCsv(string path)
+        {
+            try
+            {
+                // Convert the dictionary back into CSV lines
+                var lines = MasterFile.Select(kvp => $"{kvp.Key},{kvp.Value}");
+
+                // Overwrite or create the CSV file
+                File.WriteAllLines(path, lines);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saving CSV file:\n{ex.Message}");
             }
         }
 
@@ -68,12 +85,17 @@ namespace Malin_SSS_AT3
                 return $"The staff ID {parsedId} already exists.";
             }
 
+            if (!parsedId.ToString().StartsWith("77"))
+            {
+                return $"The staff ID {parsedId} does not start with 77.";
+            }
             MasterFile.Add(parsedId, name);
             return $"New staff member {name} , {parsedId} has been created.";
         }
 
         public string UpdateStaff(string id, string name)
         {
+            // if id is parsed as an int and the dictionary contains that id, change the name at that id found
             if (int.TryParse(id, out int parsedId) &&
                 MasterFile.ContainsKey(parsedId))
             {
