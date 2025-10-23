@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace Malin_SSS_AT3
 {
@@ -18,10 +19,11 @@ namespace Malin_SSS_AT3
     {
         FrontProcessor frontProcessorObj = new FrontProcessor();
         BackProcessor backProcessorObj = new BackProcessor();
+        string filePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "MalinStaffNamesV3.csv");
         public MainWindow()
         {
             InitializeComponent();
-            backProcessorObj.ReadCsv(@"D:\Diploma - Software Development\ICTPRG535  ICTPRG547  ICTICT517 - Complex Data Structures\Assessments\MalinStaffNamesV3.csv");
+            backProcessorObj.ReadCsv(filePath);
             frontProcessorObj.DisplayUnsortedListBox((MainWindow)MainWindow.GetWindow(this), backProcessorObj);
         }
 
@@ -38,6 +40,26 @@ namespace Malin_SSS_AT3
         private void txtBoxClientID_TextChanged(object sender, TextChangedEventArgs e)
         {
             frontProcessorObj.IDTextChanged((MainWindow)MainWindow.GetWindow(this), backProcessorObj);
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void lstBoxSecondDisplay_KeyUp(object sender, KeyEventArgs e)
+        {
+            
+        }
+
+        private void txtBoxName_KeyDown(object sender, KeyEventArgs e)
+        {
+            
+        }
+
+        private void txtBoxClientID_KeyDown(object sender, KeyEventArgs e)
+        {
+            
         }
     }
 }
