@@ -27,7 +27,12 @@
 
         <DockPanel LastChildFill="True">
             <StatusBar Name="stsStrip" DockPanel.Dock="Bottom" Height="31">
-                <TextBlock Text="Status: "/>
+                <StatusBarItem>
+                    <TextBlock Text="Status: "/>
+                </StatusBarItem>
+                <StatusBarItem>
+                    <TextBlock Name="txtStatusMessage" />
+                </StatusBarItem>
             </StatusBar>
             <Grid/>
         </DockPanel>

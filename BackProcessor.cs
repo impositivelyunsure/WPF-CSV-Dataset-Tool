@@ -49,8 +49,8 @@ namespace Malin_SSS_AT3
 
 
         // Create staff method for admin panel
-        // decided on returning strings for user feedback to be used in status strip messages instead of passing through --
-        // the admin window to keep the seperation of front end and back end logic
+        // decided on returning strings of feedback to be used in status strip messages instead of passing through --
+        // the admin window and grabbing text box values. this is to keep the seperation of front end and back end logic
         public string CreateStaff(string id, string name)
         {
             if (int.TryParse(id, out int parsedId))
@@ -63,7 +63,12 @@ namespace Malin_SSS_AT3
                 return "The staff input name cannot be empty.";
             }
 
-            MasterFile[parsedId] = name;
+            if (MasterFile.ContainsKey(parsedId))
+            {
+                return $"The staff ID {parsedId} already exists.";
+            }
+
+            MasterFile.Add(parsedId, name);
             return $"New staff member {name} , {parsedId} has been created.";
         }
 
@@ -77,7 +82,7 @@ namespace Malin_SSS_AT3
             }
             else
             {
-                return $"The staff ID {id} entered is not a valid input.";
+                return $"The staff ID {id} is not a valid input.";
             }
         }
 

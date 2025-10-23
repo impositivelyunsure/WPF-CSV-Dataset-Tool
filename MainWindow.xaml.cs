@@ -12,9 +12,6 @@ using System.IO;
 
 namespace Malin_SSS_AT3
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         FrontProcessor frontProcessorObj = new FrontProcessor();

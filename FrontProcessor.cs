@@ -17,6 +17,9 @@ namespace Malin_SSS_AT3
         {
             mwindow.txtBoxClientID.Text = string.Empty;
             mwindow.txtBoxName.Text = string.Empty;
+
+            mwindow.txtStatusMessage.Text = "";
+            mwindow.txtStatusMessage.Text = "Cleared text boxes.";
         }
 
         // Display the original, unsorted list box
@@ -28,6 +31,9 @@ namespace Malin_SSS_AT3
             {
                 mwindow.lstBoxDisplay.Items.Add($"{item.Key}, {item.Value}");
             }
+
+            mwindow.txtStatusMessage.Text = "";
+            mwindow.txtStatusMessage.Text = "Displayed unsorted staff members.";
         }
 
         // Display the queried list box
@@ -38,6 +44,9 @@ namespace Malin_SSS_AT3
             {
                 mwindow.lstBoxSecondDisplay.Items.Add($"{item.Key}, {item.Value}");
             }
+
+            mwindow.txtStatusMessage.Text = "";
+            mwindow.txtStatusMessage.Text = "Displayed sorted staff members.";
         }
 
         // Name text box event handler for changed text, updates & displays the queried list box
@@ -63,6 +72,8 @@ namespace Malin_SSS_AT3
                     mwindow.txtBoxClientID.Text = parts[0].Trim();
                     mwindow.txtBoxName.Text = parts[1].Trim();
                 }
+                mwindow.txtStatusMessage.Text = "";
+                mwindow.txtStatusMessage.Text = "Selection changed on sorted list box.";
             }
         }
 
@@ -74,6 +85,9 @@ namespace Malin_SSS_AT3
                 mwindow.txtBoxName.Clear();
                 mwindow.txtBoxName.Focus();
                 e.Handled = true;
+
+                mwindow.txtStatusMessage.Text = "";
+                mwindow.txtStatusMessage.Text = "Ctrl + N pressed. Cleared name text box.";
             }
         }
 
@@ -85,6 +99,9 @@ namespace Malin_SSS_AT3
                 mwindow.txtBoxClientID.Clear();
                 mwindow.txtBoxClientID.Focus();
                 e.Handled = true;
+
+                mwindow.txtStatusMessage.Text = "";
+                mwindow.txtStatusMessage.Text = "Ctrl + I pressed. Cleared ID text box.";
             }
         }
 
@@ -97,6 +114,9 @@ namespace Malin_SSS_AT3
             {
                 SelectionChanged(mwindow);
             }
+
+            mwindow.txtStatusMessage.Text = "";
+            mwindow.txtStatusMessage.Text = "Up arrow key pressed. Selected staff member changed.";
         }
 
         // Opening Admin GUI
@@ -107,7 +127,7 @@ namespace Malin_SSS_AT3
 
             if (alt && key == Key.A)
             {
-                var admin = new AdminWindow();
+                var admin = new AdminWindow(int.Parse(window.txtBoxClientID.Text), window.txtBoxName.Text);
                 admin.Owner = window;
                 admin.ShowDialog();
             }

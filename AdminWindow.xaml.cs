@@ -17,25 +17,30 @@ namespace Malin_SSS_AT3
     public partial class AdminWindow : Window
     {
         BackProcessor backProcessorObj = new BackProcessor();
+        private readonly int id;
+        private readonly string name;
 
-        public AdminWindow()
+        public AdminWindow(int genId, string genName)
         {
             InitializeComponent();
+            txtBoxAdminID.Text = genId.ToString();
+            txtBoxAdminName.Text = genName;
         }
+
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-            backProcessorObj.CreateStaff(txtBoxAdminID.Text, txtBoxAdminName.Text);
+            stsStrip.Items.Add(backProcessorObj.CreateStaff(txtBoxAdminName.Text, txtBoxAdminID.Text));
         }
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
-            backProcessorObj.UpdateStaff(txtBoxAdminID.Text, txtBoxAdminName.Text);
+            stsStrip.Items.Add(backProcessorObj.UpdateStaff(txtBoxAdminName.Text, txtBoxAdminID.Text));
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            backProcessorObj.DeleteStaff(txtBoxAdminID.Text, txtBoxAdminName.Text);
+            stsStrip.Items.Add(backProcessorObj.DeleteStaff(txtBoxAdminName.Text, txtBoxAdminID.Text));
         }
     }
 }
