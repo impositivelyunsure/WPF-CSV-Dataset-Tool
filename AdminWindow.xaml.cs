@@ -14,12 +14,10 @@ using System.Windows.Shapes;
 
 namespace Malin_SSS_AT3
 {
-    /// <summary>
-    /// Interaction logic for AdminWindow.xaml
-    /// </summary>
     public partial class AdminWindow : Window
     {
-       
+        BackProcessor backProcessorObj = new BackProcessor();
+
         public AdminWindow()
         {
             InitializeComponent();
@@ -27,17 +25,17 @@ namespace Malin_SSS_AT3
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-
+            backProcessorObj.CreateStaff(txtBoxAdminID.Text, txtBoxAdminName.Text);
         }
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
-
+            backProcessorObj.UpdateStaff(txtBoxAdminID.Text, txtBoxAdminName.Text);
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-
+            backProcessorObj.DeleteStaff(txtBoxAdminID.Text, txtBoxAdminName.Text);
         }
     }
 }

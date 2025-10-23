@@ -88,9 +88,9 @@ namespace Malin_SSS_AT3
             }
         }
 
-        // Redundant as selection changed event already handles the queried list box display
+        // Redundant as selection changed event already handles the queried list box display --
         // meaning, once an item is selected, the list box will only show that one selected item and the associated text boxes are filled.
-        // you can still call it, but it will only be on that one remaining item.
+        // you can still call it, but it will only be on that one remaining item that is being displayed in the list box.
         public void ListBoxSecondDisplayKeyUp(MainWindow mwindow, KeyEventArgs e)
         {
             if (e.Key == Key.Enter || e.Key == Key.Tab)

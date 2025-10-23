@@ -5,12 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Malin_SSS_AT3"
         mc:Ignorable="d"
-        Title="AdminWindow" Height="450" Width="800">
+        WindowStyle="ToolWindow"
+        ShowInTaskbar="False"
+        Title="Admin Window" Height="337" Width="479">
     <Grid>
         <Button Name="btnCreate" Content="Create" HorizontalAlignment="Left" Margin="94,107,0,0" VerticalAlignment="Top" Width="77" Click="btnCreate_Click"/>
         <Button Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="94,146,0,0" VerticalAlignment="Top" Width="77" Click="btnUpdate_Click"/>
         <Button Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="94,184,0,0" VerticalAlignment="Top" Width="77" Click="btnDelete_Click"/>
-        <StatusBar Name="stsStrip" Margin="0,395,0,0"/>
+        <DockPanel LastChildFill="True">
+            <StatusBar Name="stsStrip" DockPanel.Dock="Bottom" Height="31">
+                <TextBlock Text="Status: "/>
+            </StatusBar>
+            <Grid/>
+        </DockPanel>
+        <TextBox Name ="txtBoxAdminName" HorizontalAlignment="Left" Margin="226,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="txtBoxAdminID" HorizontalAlignment="Left" Margin="226,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Name" HorizontalAlignment="Left" Margin="226,76,0,0" VerticalAlignment="Top"/>
+        <Label Content="Client ID" HorizontalAlignment="Left" Margin="226,148,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

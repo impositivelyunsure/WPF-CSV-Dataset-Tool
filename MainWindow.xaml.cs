@@ -44,22 +44,22 @@ namespace Malin_SSS_AT3
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-
+            frontProcessorObj.WindowKeyDown((MainWindow)MainWindow.GetWindow(this), e);
         }
 
         private void lstBoxSecondDisplay_KeyUp(object sender, KeyEventArgs e)
         {
-            
+            frontProcessorObj.ListBoxSecondDisplayKeyUp((MainWindow)MainWindow.GetWindow(this), e);
         }
 
         private void txtBoxName_KeyDown(object sender, KeyEventArgs e)
         {
-            
+            frontProcessorObj.TextBoxNameKeyDown((MainWindow)MainWindow.GetWindow(this), e);
         }
 
         private void txtBoxClientID_KeyDown(object sender, KeyEventArgs e)
         {
-            
+            frontProcessorObj.TextBoxClientIDKeyDown((MainWindow)MainWindow.GetWindow(this), e);
         }
     }
 }
