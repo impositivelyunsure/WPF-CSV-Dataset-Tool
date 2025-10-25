@@ -35,6 +35,7 @@ namespace Malin_SSS_AT3
             }
         }
 
+        // save the dictionary as a csv
         public void SaveCsv(string path)
         {
             try
@@ -70,7 +71,7 @@ namespace Malin_SSS_AT3
         // the admin window and grabbing text box values. this is to keep the seperation of front end and back end logic
         public string CreateStaff(string id, string name)
         {
-            if (int.TryParse(id, out int parsedId))
+            if (!int.TryParse(id, out int parsedId))
             {
                 return $"The entered ID is not a valid input.";
             }
@@ -93,6 +94,7 @@ namespace Malin_SSS_AT3
             return $"New staff member {name} , {parsedId} has been created.";
         }
 
+        // update staff member
         public string UpdateStaff(string id, string name)
         {
             // if id is parsed as an int and the dictionary contains that id, change the name at that id found
@@ -104,10 +106,11 @@ namespace Malin_SSS_AT3
             }
             else
             {
-                return $"The staff ID {id} is not a valid input.";
+                return $"The staff ID {id} is not a valid input, or cannot be found.";
             }
         }
 
+        // delete staff member
         public string DeleteStaff(string id, string name)
         {
             if (int.TryParse(id, out int parsedId) &&

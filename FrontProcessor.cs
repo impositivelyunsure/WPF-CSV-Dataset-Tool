@@ -128,7 +128,7 @@ namespace Malin_SSS_AT3
             mwindow.txtStatusMessage.Text = "Up arrow key pressed. Selected staff member changed.";
         }
 
-        // Opening Admin GUI
+        // Opening Admin GUI with CTRL + A
         public void WindowKeyDown(BackProcessor processor, MainWindow window, KeyEventArgs e)
         {
             bool alt = (Keyboard.Modifiers & ModifierKeys.Alt) != 0;
@@ -136,7 +136,7 @@ namespace Malin_SSS_AT3
 
             if (alt && key == Key.A)
             {
-                var admin = new AdminWindow(processor, int.Parse(window.txtBoxClientID.Text), window.txtBoxName.Text);
+                var admin = new AdminWindow(processor, window.txtBoxClientID.Text, window.txtBoxName.Text); // passes through the selected staff info
                 admin.Owner = window;
                 admin.ShowDialog();
             }

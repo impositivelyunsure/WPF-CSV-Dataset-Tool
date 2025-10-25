@@ -13,10 +13,4 @@
     <None Remove="MalinStaffNamesV3.csv" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Include="MalinStaffNamesV3.csv">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
 </Project>

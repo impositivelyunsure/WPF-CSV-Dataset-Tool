@@ -9,6 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
+using Path = System.IO.Path;
 
 namespace Malin_SSS_AT3
 {
@@ -16,7 +17,7 @@ namespace Malin_SSS_AT3
     {
         FrontProcessor frontProcessorObj = new FrontProcessor();
         BackProcessor backProcessorObj = new BackProcessor();
-        string filePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "MalinStaffNamesV3.csv");
+        string filePath = Path.Combine(AppContext.BaseDirectory, "MalinStaffNamesV3.csv");
         public MainWindow()
         {
             InitializeComponent();
