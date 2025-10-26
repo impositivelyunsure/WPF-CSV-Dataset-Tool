@@ -11,17 +11,23 @@ using System.Windows.Shapes;
 using System.IO;
 using Path = System.IO.Path;
 
+// Ethan Daly - M323114
+// 25/10/25
+// Wpf with features
+
 namespace Malin_SSS_AT3
 {
     public partial class MainWindow : Window
     {
         FrontProcessor frontProcessorObj = new FrontProcessor();
         BackProcessor backProcessorObj = new BackProcessor();
-        string filePath = Path.Combine(AppContext.BaseDirectory, "MalinStaffNamesV3.csv");
+        string filePath = "Data/MalinStaffNamesV3.csv";
+
         public MainWindow()
         {
             InitializeComponent();
             backProcessorObj.ReadCsv(filePath);
+            backProcessorObj.TestRead(filePath); // test method used to gather performance info (milliseconds taken to perform)
             frontProcessorObj.DisplayUnsortedListBox((MainWindow)MainWindow.GetWindow(this), backProcessorObj);
         }
 

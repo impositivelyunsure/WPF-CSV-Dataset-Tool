@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace Malin_SSS_AT3
 {
@@ -18,7 +19,7 @@ namespace Malin_SSS_AT3
     {
         BackProcessor backProcessorObj = new BackProcessor();
         FrontProcessor frontProcessorObj = new FrontProcessor();
-        private readonly string csvPath = "MalinStaffNamesV3.csv";
+        string csvPath = "Data/MalinStaffNamesV3.csv";
 
         public AdminWindow(BackProcessor backPro, string genId, string genName)
         {
@@ -48,6 +49,7 @@ namespace Malin_SSS_AT3
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             backProcessorObj.SaveCsv(csvPath);
+            backProcessorObj.TestWrite(csvPath); // test method to retrieve performance info (milliseconds taken to perform)
         }
 
         // close admin panel on ALT + L

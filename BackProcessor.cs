@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Xml.Linq;
+using System.Diagnostics;
 
 namespace Malin_SSS_AT3
 {
@@ -13,6 +14,28 @@ namespace Malin_SSS_AT3
     {
         public Dictionary<int, string> MasterFile = new Dictionary<int, string>();
         public SortedDictionary<int, string> SortedDictionary = new SortedDictionary<int, string>();
+
+
+        public double TestRead(string path)
+        {
+            var sw = Stopwatch.StartNew();
+
+            ReadCsv(path);
+
+            sw.Stop();
+            return sw.Elapsed.TotalMilliseconds;
+        }
+
+        public double TestWrite(string path)
+        {
+            var sw = Stopwatch.StartNew();
+
+            // Your existing WriteCsv
+            SaveCsv(path);
+
+            sw.Stop();
+            return sw.Elapsed.TotalMilliseconds;
+        }
 
 
         // Read csv file into the dictionary
