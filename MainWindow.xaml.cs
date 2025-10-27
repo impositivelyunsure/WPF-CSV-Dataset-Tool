@@ -27,7 +27,8 @@ namespace Malin_SSS_AT3
         {
             InitializeComponent();
             backProcessorObj.ReadCsv(filePath);
-            backProcessorObj.TestRead(filePath); // test method used to gather performance info (milliseconds taken to perform)
+            //backProcessorObj.TestRead(filePath); // test method used to gather performance info (milliseconds taken to perform)
+           
             frontProcessorObj.DisplayUnsortedListBox((MainWindow)MainWindow.GetWindow(this), backProcessorObj);
         }
 
@@ -64,6 +65,11 @@ namespace Malin_SSS_AT3
         private void txtBoxClientID_KeyDown(object sender, KeyEventArgs e)
         {
             frontProcessorObj.TextBoxClientIDKeyDown((MainWindow)MainWindow.GetWindow(this), e);
+        }
+
+        private void btnTestSortedWrite_Click(object sender, RoutedEventArgs e)
+        {
+            backProcessorObj.TestWriteSorted(filePath);
         }
     }
 }

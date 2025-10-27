@@ -16,6 +16,7 @@ namespace Malin_SSS_AT3
         public SortedDictionary<int, string> SortedDictionary = new SortedDictionary<int, string>();
 
 
+        // test read method for regular dictionary
         public double TestRead(string path)
         {
             var sw = Stopwatch.StartNew();
@@ -23,9 +24,13 @@ namespace Malin_SSS_AT3
             ReadCsv(path);
 
             sw.Stop();
+
+            Trace.WriteLine($"ReadCsv took {sw.Elapsed.TotalMilliseconds:F3} ms");
             return sw.Elapsed.TotalMilliseconds;
         }
 
+       
+        // test write method for regular dictionary
         public double TestWrite(string path)
         {
             var sw = Stopwatch.StartNew();
@@ -34,6 +39,49 @@ namespace Malin_SSS_AT3
             SaveCsv(path);
 
             sw.Stop();
+
+            Trace.WriteLine($"SaveCsv took {sw.Elapsed.TotalMilliseconds:F3} ms");
+            return sw.Elapsed.TotalMilliseconds;
+        }
+
+        // test insert method for regular dictionary
+        public double InsertTest(string path)
+        {
+            var dict = new Dictionary<int, string>();
+            var swDict = Stopwatch.StartNew();
+            foreach (var kvp in MasterFile)
+                dict[kvp.Key] = kvp.Value;
+            swDict.Stop();
+            Trace.WriteLine($"Dictionary Insert: {swDict.Elapsed.TotalMilliseconds:F3} ms");
+            return swDict.Elapsed.TotalMilliseconds;
+        }
+
+        // test insert method for sorted dictionary
+        public double InsertTestSorted(string path)
+        {
+            var sdict = new SortedDictionary<int, string>();
+            var swSdict = Stopwatch.StartNew();
+            foreach (var kvp in MasterFile)
+                sdict[kvp.Key] = kvp.Value;
+            swSdict.Stop();
+            Trace.WriteLine($"SortedDictionary Insert: {swSdict.Elapsed.TotalMilliseconds:F3} ms");
+            return swSdict.Elapsed.TotalMilliseconds;
+        }
+
+        // test write method for sorted dictionary
+        public double TestWriteSorted(string path)
+        {
+            // create a sorted copy of the existing dictionary
+            var sorted = new SortedDictionary<int, string>(MasterFile);
+
+            var sw = Stopwatch.StartNew();
+
+            // convert sorted data back to CSV and write
+            var lines = sorted.Select(kvp => $"{kvp.Key},{kvp.Value}");
+            File.WriteAllLines(path, lines);
+
+            sw.Stop();
+            Trace.WriteLine($"Sorted Write took {sw.Elapsed.TotalMilliseconds:F3} ms");
             return sw.Elapsed.TotalMilliseconds;
         }
 
@@ -45,9 +93,15 @@ namespace Malin_SSS_AT3
             {
                 var parts = line.Split(',');
 
-                if (string.IsNullOrWhiteSpace(line)) continue;
+                if (string.IsNullOrWhiteSpace(line))
+                {
+                    continue; // 
+                }
 
-                if (parts.Length < 0) continue;
+                if (parts.Length < 2)
+                {
+                    continue;
+                }
 
                 var left = parts[0].Trim().Trim('"').TrimStart('\ufeff'); 
                 var right = parts[1].Trim().Trim('"');                     
