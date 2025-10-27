@@ -13,6 +13,7 @@ namespace Malin_SSS_AT3
 {
     public class FrontProcessor
     {
+        // clear front window text boxes
         public void ClearTextBoxes(MainWindow mwindow)
         {
             mwindow.txtBoxClientID.Text = string.Empty;
@@ -22,6 +23,7 @@ namespace Malin_SSS_AT3
             mwindow.txtStatusMessage.Text = "Cleared text boxes.";
         }
 
+        // clear admin window text boxes
         public void ClearAdminTextBoxes(AdminWindow awindow)
         {
             awindow.txtBoxAdminID.Text = string.Empty;
@@ -73,12 +75,17 @@ namespace Malin_SSS_AT3
         // Selection changed event handler for queried list box
         public void SelectionChanged(MainWindow mwindow)
         {
+            // if the selected item is a string
             if (mwindow.lstBoxSecondDisplay.SelectedItem is string line)
             {
+                // split the item using (,) as a delimiter
                 var parts = line.Split(',');
+                // if the item has been split into 2
                 if (parts.Length >= 2)
                 {
+                    // fill the id text box with the id
                     mwindow.txtBoxClientID.Text = parts[0].Trim();
+                    // fill the name text box with the name
                     mwindow.txtBoxName.Text = parts[1].Trim();
                 }
                 mwindow.txtStatusMessage.Text = "";

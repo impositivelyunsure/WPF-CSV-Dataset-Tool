@@ -145,7 +145,7 @@ namespace Malin_SSS_AT3
 
         // Create staff method for admin panel
         // decided on returning strings of feedback to be used in status strip messages instead of passing through --
-        // the admin window and grabbing text box values. this is to keep the seperation of front end and back end logic
+        // the admin window and grabbing text box values. this is to keep the seperation of front end and back end logic.
         public string CreateStaff(string id, string name)
         {
             if (!int.TryParse(id, out int parsedId))

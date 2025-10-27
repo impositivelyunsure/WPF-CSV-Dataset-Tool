@@ -12,8 +12,8 @@ using System.IO;
 using Path = System.IO.Path;
 
 // Ethan Daly - M323114
-// 25/10/25
-// Wpf with features
+// 27/10/25
+// Wpf app with features
 
 namespace Malin_SSS_AT3
 {
@@ -27,8 +27,6 @@ namespace Malin_SSS_AT3
         {
             InitializeComponent();
             backProcessorObj.ReadCsv(filePath);
-            //backProcessorObj.TestRead(filePath); // test method used to gather performance info (milliseconds taken to perform)
-           
             frontProcessorObj.DisplayUnsortedListBox((MainWindow)MainWindow.GetWindow(this), backProcessorObj);
         }
 
