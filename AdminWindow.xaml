@@ -5,12 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Malin_SSS_AT3"
         mc:Ignorable="d"
-        Title="AdminWindow" Height="450" Width="800">
+        WindowStyle="ToolWindow"
+        ShowInTaskbar="False"
+        Closing="Window_Closing"
+        KeyDown="AdminWindow_KeyDown"
+        Title="Admin Window" Height="337" Width="479">
     <Grid>
-        <Button Name="btnCreate" Content="Create" HorizontalAlignment="Left" Margin="94,107,0,0" VerticalAlignment="Top" Width="77" Click="btnCreate_Click"/>
-        <Button Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="94,146,0,0" VerticalAlignment="Top" Width="77" Click="btnUpdate_Click"/>
-        <Button Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="94,184,0,0" VerticalAlignment="Top" Width="77" Click="btnDelete_Click"/>
-        <StatusBar Name="stsStrip" Margin="0,395,0,0"/>
+        <DockPanel LastChildFill="True">
+            <StatusBar Name="stsStrip" VerticalAlignment="Bottom" Height="31">
+                <StatusBarItem>
+                    <TextBlock Text="Status: "/>
+                </StatusBarItem>
+                <StatusBarItem>
+                    <TextBlock Name="txtStatusMessage" />
+                </StatusBarItem>
+            </StatusBar>
+        </DockPanel>
 
+        <Button Name="btnCreate" Content="Create" HorizontalAlignment="Left" Margin="28,79,0,0" VerticalAlignment="Top" Width="77" Click="btnCreate_Click"/>
+        <Button Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="28,116,0,0" VerticalAlignment="Top" Width="77" Click="btnUpdate_Click"/>
+        <Button Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="28,154,0,0" VerticalAlignment="Top" Width="77" Click="btnDelete_Click"/>
+        <Button Name="btnSave" Content="Save" Margin="28,190,374,111" Click="btnSave_Click"/>
+
+
+        <TextBox Name="txtBoxAdminName" HorizontalAlignment="Left" Margin="147,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="txtBoxAdminID" HorizontalAlignment="Left" Margin="147,164,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
+        <Label Content="Name" HorizontalAlignment="Left" Margin="147,64,0,0" VerticalAlignment="Top"/>
+        <Label Content="Client ID" HorizontalAlignment="Left" Margin="147,136,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
