@@ -1,86 +1,185 @@
-This project is a Windows desktop application developed to manage staff records stored in a CSV file.
-The application provides a fast and simple way for staff to search, view, and administer staff records using a keyboard-driven interface.
+<h1 align="center">CSV Dataset Tool</h1>
+<h3 align="center">Staff Management Application</h3>
+
+<p align="center">
+C# • WPF • CSV Data Storage • Agile Development
+</p>
+
+---
+
+## 📋 Overview
+
+This project is a Windows desktop application developed for **Malin Space Science Systems (MSSS)**.  
+The application manages staff records stored in a CSV file and provides fast searching, filtering, and administrative record management.
+
+---
+
+## 🎯 Project Objectives
+
+The application was designed to:
+
+- Load staff records from a **CSV file**
+- Display staff records in a **read-only list**
+- Allow users to **filter results by Staff ID or Name**
+- Display selected staff details in text fields
+- Provide **Create, Update, and Delete** functionality through an Admin interface
+- Prevent **duplicate staff ID numbers**
+- Display **confirmation messages** before destructive actions
+- Support **keyboard-driven interaction** using Alt, Ctrl and key combinations
+- Demonstrate **efficient file I/O and search performance**
+
+---
+
+## 🖥️ Application Structure
+
+The system contains **two main interfaces**.
+
+### Main Window (User Interface)
+
+Used by staff to:
+
+- Load and view the staff list
+- Filter records by ID or name
+- Select records to view details
+- Open the Admin interface when edits are required
+
+### Admin Window (Administrative Interface)
+
+Used by authorised users to:
+
+- Create new staff records
+- Update existing records
+- Delete staff records
+- Save changes back to the CSV file
+
+Confirmation messages are displayed before important operations.
+
+---
+
+## 📂 Data Format
+
+Staff records are stored in a **CSV file**.
+
+Example format:
+
+#### StaffID,StaffName
+#### 771234567,John Smith
+#### 772345678,Sarah Jones
 
 
+### Staff ID Rules
 
-**Project Objectives**
+| Rule | Description |
+|-----|-------------|
+| Length | 9 digits |
+| Prefix | Must start with **77** |
+| Uniqueness | Duplicate IDs are not allowed |
 
--The application was designed to:
+The leading zero from UK mobile numbers has been removed as per MSSS requirements.
 
--Load staff data from a CSV file
+---
 
--Display the staff records in an immutable list box
+## ⚙️ Technologies Used
 
--Allow users to filter records by ID or staff name
+| Technology | Purpose |
+|-----------|--------|
+| C# | Application logic |
+| .NET | Framework |
+| WPF | User interface |
+| Visual Studio | Development environment |
+| Git & GitHub | Version control and Agile tracking |
+| CSV Files | Data storage |
 
--Display selected record details in text fields
+---
 
--Allow administrators to Create, Update, and Delete staff records
+## 🧠 Data Structures
 
--Prevent duplicate staff ID numbers
+Two data structures were evaluated for performance:
 
--Provide confirmation messages for update and delete actions
+| Structure | Description |
+|----------|-------------|
+| `Dictionary<int,string>` | Fast insertion and lookup |
+| `SortedDictionary<int,string>` | Maintains sorted order |
 
--Use keyboard shortcuts (Alt / Ctrl / character keys) for navigation
+Performance testing compared:
 
--Demonstrate efficient File I/O and search performance
+- CPU usage
+- Memory usage
+- File I/O efficiency
+
+Results showed **Dictionary** provides better performance for this application because constant sorting is unnecessary.
+
+---
+
+## ⌨️ Keyboard Controls
+
+This application is designed to be **keyboard driven**.
+
+| Shortcut | Action |
+|--------|--------|
+| Alt + A | Open Admin window |
+| Alt + L | Close Admin window |
+| Tab | Navigate between fields |
+| Enter | Confirm actions |
+
+---
+
+## 📊 Performance Testing
+
+Performance testing was conducted using:
+
+- `Stopwatch` for execution timing
+- `Trace.WriteLine()` for performance logging
+- Visual Studio **Performance Profiler**
+
+Tests included:
+
+- CSV file read speed
+- CSV file write speed
+- Dictionary insertion performance
+- SortedDictionary insertion performance
+
+These tests demonstrated the efficiency of the chosen data structure.
+
+---
+
+## 🛠️ Project Structure
+
+MainWindow.xaml
+MainWindow.xaml.cs
+AdminWindow.xaml
+AdminWindow.xaml.cs
+BackProcessor.cs
+FrontProcessor.cs
+AssemblyInfo.cs
+App.xaml
 
 
-**Technologies Used**
+### Key Components
 
--C#
--.NET
--Windows Presentation Foundation (WPF)
--Visual Studio
--Git & GitHub
--CSV File Storage
+| File | Purpose |
+|-----|--------|
+| `BackProcessor.cs` | Handles data processing and file operations |
+| `FrontProcessor.cs` | Manages UI logic and interaction |
+| `MainWindow` | Primary staff interface |
+| `AdminWindow` | Administrative record management |
 
+---
 
+## 🔄 Development Methodology
 
-**Application Structure**
+This project followed an **Agile development approach**, including:
 
--The application consists of two main windows:
+- Iterative development
+- Feature commits tracked in **GitHub**
+- Branching and pull requests
+- Continuous testing and optimisation
 
--Main Window (General Interface)
+---
 
--Used by staff to:
+## 👨‍💻 Author
 
--Load CSV data
+**Developer:** Ethan Daly
+**Project:** Malin Space Science Systems
 
--Seach and filter staff records
-
--View selected staff details
-
--Open the Admin interface if modifications are required
-
-
-
-**Data Format**
-
--Staff records are stored in a CSV file using the format:
-
-StaffID,StaffName
-771234567,John Smith
-772345678,Sarah Jones
-
--Rules for staff IDs:
--Must be 9 digits
--Must begin with 77
--Must be unique
--The leading zero used in UK mobile numbers is removed.
-
-
-
-**Admin Window (Administration Interface)**
-
--Used by authorised users to:
-
--Create new staff records
-
--Update existing staff details
-
--Delete staff records
-
--Save changes to the CSV file
-
--Confirmation messages are displayed before critical operations such as updates and deletions.
+---
