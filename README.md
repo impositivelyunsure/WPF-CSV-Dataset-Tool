@@ -9,8 +9,7 @@ C# • WPF • CSV Data Storage • Agile Development
 
 ## 📋 Overview
 
-This project is a Windows desktop application developed for **Malin Space Science Systems (MSSS)**.  
-The application manages staff records stored in a CSV file and provides fast searching, filtering, and administrative record management.
+This project is a Windows desktop application developed to manage CSV files of staff usernames & IDs. Provides fast searching, filtering, and administrative record management.
 
 ---
 
